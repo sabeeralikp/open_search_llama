@@ -1,6 +1,6 @@
 from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
-from agents.base import llama3_json
+from agents.llm import llama3_json
 
 # Router
 router_prompt = PromptTemplate(
