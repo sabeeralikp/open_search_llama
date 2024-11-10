@@ -5,11 +5,11 @@ from langchain_community.tools import DuckDuckGoSearchRun
 from langchain_community.utilities import DuckDuckGoSearchAPIWrapper
 from langgraph.graph import END, StateGraph
 
-from graph import GraphState
-from search import web_search
-from transform import transform_query
-from generate import generate
-from router import route_question
+from agents.graph import GraphState
+from agents.search import web_search
+from agents.transform import transform_query
+from agents.generate import generate
+from agents.router import route_question
 
 # Defining LLM
 local_llm = "llama3.2"

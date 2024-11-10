@@ -1,6 +1,6 @@
 from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from base import llama3
+from agents.base import llama3
 
 # Generation Prompt
 generate_prompt = PromptTemplate(

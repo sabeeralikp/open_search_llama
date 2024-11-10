@@ -1,6 +1,6 @@
 from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
-from base import llama3_json
+from agents.base import llama3_json
 
 # Query Transformation
 query_prompt = PromptTemplate(
