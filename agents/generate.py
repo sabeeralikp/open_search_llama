@@ -1,3 +1,10 @@
+"""
+This module implements the generation node of the search agent workflow.
+
+It uses a LangChain prompt template and LLM to generate natural language responses
+from web search results.
+"""
+
 from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from agents.llm import llama3
@@ -33,22 +40,32 @@ generate_prompt = PromptTemplate(
 generate_chain = generate_prompt | llama3 | StrOutputParser()
 
 
-# Node - Generate
 def generate(state):
     """
-    Generate answer
-
+    Generate a natural language response based on web search results.
+    
+    This function takes the search query and web search context from the graph state,
+    and uses an LLM to generate a coherent answer synthesizing the search results.
+    
     Args:
-        state (dict): The current graph state
-
+        state (dict): The current graph state containing:
+            - question (str): The original search query
+            - context (str): Web search results and context
+            
     Returns:
-        state (dict): New key added to state, generation, that contains LLM generation
+        dict: Updated state with new key:
+            - generation (str): The LLM-generated natural language response
+            
+    Example:
+        >>> state = {"question": "What is Python?", "context": "Python is a programming language..."}
+        >>> result = generate(state)
+        >>> print(result["generation"])
+        "Python is a high-level programming language..."
     """
-
     print("Step: Generating Final Response")
     question = state["question"]
     context = state["context"]
 
-    # Answer Generation
+    # Answer Generation 
     generation = generate_chain.invoke({"context": context, "question": question})
     return {"generation": generation}

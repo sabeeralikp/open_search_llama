@@ -1,3 +1,13 @@
+"""
+This module implements a search agent workflow using LangGraph.
+
+The workflow consists of multiple nodes for web search, query transformation,
+and response generation, connected in a directed graph.
+
+Author: Sabeerali
+Created: 10 Nov 2024
+"""
+
 from langgraph.graph import END, StateGraph
 
 from agents.graph import GraphState
@@ -29,5 +39,15 @@ local_agent = workflow.compile()
 
 
 def run_agent(query):
+    """
+    Execute the search agent workflow with the given query.
+
+    Args:
+        query (str): The search query to process
+
+    Returns:
+        dict: The output from the workflow execution
+
+    """
     output = local_agent.invoke({"question": query})
     return output
